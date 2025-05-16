@@ -5,3 +5,16 @@
 
 dist/
 node_modules
+
+# Editor/IDE files
+*~
+*.swp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Log files
+*.log
+logs/
+
