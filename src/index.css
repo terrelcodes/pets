@@ -1,28 +1,102 @@
+:root {
+    --color-dark: hsl(174, 25%, 10%);
+    --color-d1: hsl(174, 25%, 15%);
+    --color-d2: hsl(174, 25%, 35%);
+    --color-medium: hsl(174, 25%, 50%);
+    --color-l2: hsl(174, 25%, 65%);
+    --color-l1: hsl(174, 25%, 85%);
+    --color-light: hsl(174, 50%, 95%);
+    --color-dark-link: hsl(174, 50%, 65%);
+    --color-light-link: hsl(174, 50%, 35%);
+}
+
+body {
+    font-family: "Equity Text A", serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+header {
+    padding: .25rem 1rem;
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+}
+
+header img {
+    width: 1em;
+}
+header span{
+    display: flex;
+    flex-wrap:wrap;
+    gap: .5em;
+}
+header a {
+    color: var(--color-dark-link);
+    text-decoration: none;
+}
+h1{
+    font-size: 1.2rem;
+}
+
+main{
+    margin: 0 .5em;
+}
+.key {
+    background-color: var(--color-l1);
+    border: 1px var(--color-l2);
+    border-radius: .25em;
+    padding: .25em;
+    font-weight: 500;
+}
+
 .image-container {
-    max-width:none;
-    line-height: 0;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5em;
+    gap: 0.5em; /* This creates space between your pet items */
 }
 
 .pet-item {
-    flex: 1 220px;
+    /* flex: 1 220px; decomposes to: */
+    flex-grow: 1;
+    flex-shrink: 1; /* Allows items to shrink if not enough space, default is 1 */
+    flex-basis: 220px; /* Initial ideal size */
+
+    /* Define a base state for properties that will transition */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* A subtle default shadow */
+    /* Or if you want no initial shadow: */
+    /* box-shadow: none; */
+
+    /* --- Transition Definition --- */
+    /* Animate changes to flex-basis and box-shadow */
+    transition-property: flex-basis, box-shadow;
+    transition-duration: 0.4s; /* How long the animation takes */
+    transition-timing-function: ease-in-out; /* The acceleration curve */
+
+    /* Other styles for pet-item for better appearance */
+    background-color: #fff; /* Example background */
+    border-radius: 4px; /* Slightly rounded corners */
+    overflow: hidden; /* Ensures image's object-fit is respected within rounded corners */
+    cursor: pointer;
 }
 
-/*
-  Challenge:
-    - Set the initial main size of .expand to a size larger than 220px
-*/
-.expand{
-    flex-basis:80%;
-    width:250;
-    box-shadow: 3px 3px 5px dodgerblue;
+.pet-item.expand {
+    flex-basis: 80%; /* The item will try to take up 80% of the container's width */
+                    /* This will likely cause other items to wrap to the next line */
+    box-shadow: 3px 3px 5px dodgerblue; /* More prominent shadow when expanded */
+    z-index: 10; /* Optional: bring the expanded item above others if they overlap during transition */
 }
 
-img {
+/* Ensure images within pet-item are styled appropriately */
+.pet-item img { /* Make selector more specific */
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 100%; /* This makes the image try to fill the .pet-item's dimensions */
+    object-fit: cover; /* This will cover the area, potentially cropping the image */
+    display: block; /* Removes any extra space below the image if it were inline */
 }
