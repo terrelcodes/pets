@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     petGallery.innerHTML = pets.map((pet: Pet) => {
         return `<div class="pet-item" tabindex="0">
-                <img src="images/${pet.src}" alt="${pet.alt}">
+                <img src="/images/${pet.src}" alt="${pet.alt}">
             </div>`
     }).join('')
 
