@@ -27,7 +27,7 @@ function togglePetFocus(targetPetElement: HTMLElement) {
         focused = null;
     } else {
         targetPetElement.classList.add("expand");
-        targetPetElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); // Smoother scroll
+        targetPetElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         focused = targetPetElement;
     }
 }
@@ -36,7 +36,6 @@ function togglePetFocus(targetPetElement: HTMLElement) {
 function petClicked(e:Event){
     if (!(e.target instanceof HTMLElement)) {
         // If e.target is null, undefined, or an EventTarget that isn't an HTMLElement, bail out.
-        // console.log("Clicked target is not an HTMLElement or is null/undefined:", e.target);
         return;
     }
     // Now, TypeScript knows e.target is an HTMLElement.
@@ -64,9 +63,10 @@ function petClicked(e:Event){
 function petKeyDown(e: KeyboardEvent) {
     if (e.key === "Enter" || e.key === " ") {
         if (e.target instanceof HTMLElement) {
-            const currentPetElement = e.target.classList.contains("pet-item") ? e.target : e.target.closest(".pet-item");
+            const currentPetElement = e.target.classList.contains("pet-item") ? 
+                e.target : e.target.closest(".pet-item")
             if (currentPetElement) {
-                togglePetFocus(currentPetElement as HTMLElement); /
+                togglePetFocus(currentPetElement as HTMLElement)
                 e.preventDefault(); // Prevent space from scrolling the page
             }
         }
