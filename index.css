@@ -1,0 +1,28 @@
+.image-container {
+    max-width:none;
+    line-height: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.pet-item {
+    flex: 1 220px;
+}
+
+/*
+  Challenge:
+    - Set the initial main size of .expand to a size larger than 220px
+*/
+.expand{
+    flex-basis:80%;
+    width:250;
+    box-shadow: 3px 3px 5px dodgerblue;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
